@@ -6,8 +6,7 @@ export default function ApiKey() {
    const [unsplashKey, setUnsplashKey] = useState("");
 
    function setKeys(e) {
-      e.preventDefault();
-
+      // e.preventDefault();
       let storedKeys = localStorage.getItem("apikeys")
          ? JSON.parse(localStorage.getItem("apikeys"))
          : {};
@@ -30,7 +29,7 @@ export default function ApiKey() {
       <div className="apiKey">
          <div className="keys">
             <h1>API Keys Required</h1>
-            <form action="" onSubmit={setKeys}>
+            <form action="/" onSubmit={setKeys}>
                <input
                   type="text"
                   placeholder="Pixabay API Key"
