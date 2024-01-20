@@ -1,12 +1,13 @@
 
 footer{
-    height: 20rem;
+    height: 25rem;
     text-align: center;
   
   }
-  footer .copywrite hr{
+  footer hr{
     width: 80%;
     border-radius: 10px;
+    margin-top: 2rem;
   }
   footer .copywrite h6{
     font-size: 1.5rem;
@@ -28,11 +29,11 @@ footer{
   }
   footer .info li{
     list-style: none; 
-    font-size: 1.5rem;
     text-decoration: none;
     margin: 0.8rem;
   }
   footer .info li a{
+    font-size: 1.5rem;
     text-decoration: none;
     color: white;
     text-transform: capitalize
@@ -48,3 +49,17 @@ footer{
   .active-b{
     color: var(--Color3) !important;
   }
+  @media screen and (max-width: 520px) {
+    footer .info{
+      height: auto;
+      margin: 1.5rem auto;
+      padding: 1rem 0;
+      padding-right: 2.5rem;
+      gap: 1rem;
+      flex-direction: column;
+    }
+    .copywrite{
+      padding: 1rem;
+    }
+  }
+

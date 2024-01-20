@@ -3,6 +3,7 @@ import "./Footer.css"
 export default function Footer() {
    return (
       <footer>
+         <hr />
          <div className="info">
             <div className="c-1">
                 <img src="/stock image-logo.png" alt="" />
