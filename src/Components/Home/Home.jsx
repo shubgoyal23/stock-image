@@ -16,8 +16,21 @@ export default function Home() {
    const [imagesFinalData, setImagesFinalData] = useState([]);
 
    const searchImages = useCallback(() => {
-      let ApiKeys = localStorage.getItem("apikeys")? JSON.parse(localStorage.getItem("apikeys")): {}
-
+      let ApiKeys = localStorage.getItem("apikeys")
+         ? JSON.parse(localStorage.getItem("apikeys"))
+         : {};
+      if (Object.keys(ApiKeys).length === 0) {
+         setImagesFinalData([
+            {
+               description: "Api Keys Required",
+               pageUrl: "/apikey",
+               AutherName: "stock Image",
+               imageSrc:
+                  "https://images.unsplash.com/photo-1562770584-eaf50b017307?crop=entropy&cs=srgb&fm=jpg&ixid=M3w1MTEwNTh8MHwxfHNlYXJjaHw4fHxrZXl8ZW58MHx8fHwxNzA1NzM4ODc3fDA&ixlib=rb-4.0.3&q=85",
+               imageAltTag: "Photo of a Key",
+            },
+         ]);
+      }
 
       if (checked.pixabay && ApiKeys.pixabay) {
          let url = `https://pixabay.com/api/?key=${ApiKeys.pixabay}&q=${search}&page=${page}&per_page=30`;
@@ -182,9 +195,7 @@ export default function Home() {
             ))}
          </div>
          <div className="searh-more">
-            <button
-               onClick={() => setPAge(page + 1)}
-            >
+            <button onClick={() => setPAge(page + 1)}>
                <i className="fa-solid fa-chevron-down"></i>
             </button>
          </div>
