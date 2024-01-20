@@ -16,7 +16,8 @@ export default function Home() {
    const [imagesFinalData, setImagesFinalData] = useState([]);
 
    const searchImages = useCallback(() => {
-      let ApiKeys = JSON.parse(localStorage.getItem("apikeys"));
+      let ApiKeys = localStorage.getItem("apikeys")? JSON.parse(localStorage.getItem("apikeys")): {}
+
 
       if (checked.pixabay && ApiKeys.pixabay) {
          let url = `https://pixabay.com/api/?key=${ApiKeys.pixabay}&q=${search}&page=${page}&per_page=30`;
