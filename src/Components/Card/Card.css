@@ -15,9 +15,10 @@
     overflow: hidden;
     box-sizing: border-box;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.144);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
     transition: all ease 0.3s;
-    margin: 0.5rem auto;
+    margin: 1rem auto;
     box-shadow: 0 0 5px rgba(255, 255, 255, 0.432);
   }
   .image-div:hover{

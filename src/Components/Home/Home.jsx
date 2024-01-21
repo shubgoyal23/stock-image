@@ -25,8 +25,7 @@ export default function Home() {
                description: "Api Keys Required",
                pageUrl: "/apikey",
                AutherName: "stock Image",
-               imageSrc:
-                  "/keyImage.jpg",
+               imageSrc: "/keyImage.jpg",
                imageAltTag: "Photo of a Key",
             },
          ]);
@@ -59,61 +58,36 @@ export default function Home() {
       searchImages();
    }, [prevSearch, page]);
 
+   class imageDatamaker {
+      constructor(imageLink, imageSrc, imageAltTag, pageUrl, description, authorUrl, AutherName) {
+         this.imageLink = imageLink;
+         this.imageSrc = imageSrc;
+         this.imageAltTag = imageAltTag;
+
+         this.pageUrl = pageUrl;
+         this.description = description;
+
+         this.authorUrl = authorUrl;
+         this.AutherName = AutherName;
+      }
+   }
+
    function dataHandler(data, name) {
       if (name === "pixabay") {
-         let finalData = data.hits.map((photo) => {
-            let imageData = {};
-            imageData.id = photo.id;
-
-            imageData.imageLink = photo.largeImageURL;
-            imageData.imageSrc = photo.webformatURL;
-            imageData.imageAltTag = photo.tags;
-
-            imageData.pageUrl = photo.pageURL;
-            imageData.description = photo.tags;
-
-            imageData.authorUrl = `https://pixabay.com/users/${photo.user}-${photo.user_id}`;
-            imageData.AutherName = photo.user;
-
-            return imageData;
+         let finalData = data.hits.map((photo) => {       
+            return new imageDatamaker(photo.largeImageURL, photo.webformatURL, photo.tags, photo.pageURL, photo.tags, `https://pixabay.com/users/${photo.user}-${photo.user_id}`, photo.user)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
       if (name === "pexel") {
          let finalData = data.photos.map((photo) => {
-            let imageData = {};
-            imageData.id = photo.id;
-
-            imageData.imageLink = photo.src.large;
-            imageData.imageSrc = photo.src.large;
-            imageData.imageAltTag = photo.alt;
-
-            imageData.pageUrl = photo.url;
-            imageData.description = photo.alt;
-
-            imageData.authorUrl = photo.photographer_url;
-            imageData.AutherName = photo.photographer;
-
-            return imageData;
+            return new imageDatamaker(photo.src.large, photo.src.large, photo.alt, photo.url, photo.alt, photo.photographer_url, photo.photographer)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
       if (name === "unsplash") {
          let finalData = data.results.map((photo) => {
-            let imageData = {};
-            imageData.id = photo.id;
-
-            imageData.imageLink = photo.urls.full;
-            imageData.imageSrc = photo.urls.regular;
-            imageData.imageAltTag = photo.alt_description;
-
-            imageData.pageUrl = photo.links.html;
-            imageData.description = photo.description;
-
-            imageData.authorUrl = `https://unsplash.com/@${photo.user.username}`;
-            imageData.AutherName = photo.user.name;
-
-            return imageData;
+            return new imageDatamaker(photo.urls.full, photo.urls.regular, photo.alt_description, photo.links.html, photo.description, `https://unsplash.com/@${photo.user.username}`, photo.user.name)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
