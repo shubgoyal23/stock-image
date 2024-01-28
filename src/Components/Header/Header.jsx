@@ -7,9 +7,6 @@ import { useEffect, useState } from "react"
 export default function Header(){
     const status = useSelector(state => state.auth.loggedin)
     const [collapsed, setcollapsed] = useState(true)
-    useEffect(()=>{
-        setcollapsed(true)
-    },[status])
     return(
         <header className={collapsed? "header": "header coll"}>
             <div className="logo"><Link to="#"><img src="/stock image-logo.png" alt="" /></Link></div>
@@ -18,23 +15,23 @@ export default function Header(){
            <nav>
             <ul>
                 <li>
-                    <NavLink to="/" className={({isActive}) => `${isActive? "active" : ""}`}>Home</NavLink>
+                    <NavLink to="/" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>Home</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/about" className={({isActive}) => `${isActive? "active" : ""}`}>about</NavLink>
+                    <NavLink to="/about" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>about</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/contact" className={({isActive}) => `${isActive? "active" : ""}`}>contact</NavLink>
+                    <NavLink to="/contact" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>contact</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/apikey" className={({isActive}) => `${isActive? "active" : ""}`}>ApiKey</NavLink>
+                    <NavLink to="/apikey" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>ApiKey</NavLink>
                 </li>
             </ul>
             </nav>
             <div className="login-btn-div">
-                {!status && <NavLink to="/login" ><button>Login</button></NavLink>}
-                {!status && <NavLink to="/register" ><button>Register</button></NavLink>}
-                {status && <NavLink to="/logout" ><button>Logout</button></NavLink>} 
+                {!status && <NavLink to="/login" ><button onClick={() => setcollapsed(true)}>Login</button></NavLink>}
+                {!status && <NavLink to="/register" ><button onClick={() => setcollapsed(true)}>Register</button></NavLink>}
+                {status && <NavLink to="/logout" ><button onClick={() => setcollapsed(true)}>Logout</button></NavLink>} 
             </div>
            </div>
         </header>
