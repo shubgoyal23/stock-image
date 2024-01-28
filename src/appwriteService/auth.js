@@ -26,16 +26,18 @@ export class AuthService {
             return userAccount;
          }
       } catch (error) {
-         throw error;
+         console.log("registration::", error);
       }
    };
 
    loginUser = async ({ email, password }) => {
       try {
+         console.log("this", email, password)
          return await this.account.createEmailSession(email, password);
       } catch (error) {
-         throw error;
+         console.log("login::", error);
       }
+      return null
    };
 
    logoutUser = async () => {

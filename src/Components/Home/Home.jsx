@@ -2,10 +2,13 @@ import { useState, useCallback, useEffect } from "react";
 import { Card } from "/src/Components/index";
 import "./Home.css";
 import { v4 as uuidv4 } from "uuid";
-import authService from "../../appwriteService/auth";
+import { useSelector } from "react-redux";
+import Auth from "../../conf/conf"
 
 export default function Home() {
    const [search, setSearch] = useState("nature");
+   const user = useSelector(state => state.loggedin)
+
    const [checked, setChecked] = useState({
       pixabay: true,
       pexels: true,
@@ -17,19 +20,13 @@ export default function Home() {
    const [imagesFinalData, setImagesFinalData] = useState([]);
 
    const searchImages = useCallback(() => {
-      let ApiKeys = localStorage.getItem("apikeys")
-         ? JSON.parse(localStorage.getItem("apikeys"))
-         : {};
-      if (Object.keys(ApiKeys).length === 0) {
-         setImagesFinalData([
-            {
-               description: "Api Keys Required",
-               pageUrl: "/apikey",
-               AutherName: "stock Image",
-               imageSrc: "/keyImage.jpg",
-               imageAltTag: "Photo of a Key",
-            },
-         ]);
+      let ApiKeys = {}
+      if(user){
+         ApiKeys.pixabay = Auth.pixabayApi
+         ApiKeys.pexel = Auth.pexelsApi
+         ApiKeys.unsplash = Auth.unsplashApi
+      }else{
+         setImagesFinalData([])
       }
 
       if (checked.pixabay && ApiKeys.pixabay) {
@@ -115,7 +112,7 @@ export default function Home() {
    }
    return (
       <div className="main-div-image">
-         <h1>All In One Stock Image Search</h1>
+      {!user? <h1>Login To use image Search</h1> :<h1>All In One Stock Image Search</h1>}
          <div className="search">
             <form action="" onSubmit={FormHaldler}>
                <input

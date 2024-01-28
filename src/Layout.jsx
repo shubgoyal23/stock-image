@@ -11,6 +11,7 @@ export default function Layout(){
    useEffect(()=>{
     authService.currentUser()
     .then(userData => {
+      console.log(userData)
        if(userData){
           dispatch(login({userData}))
        }else{
