@@ -2,6 +2,7 @@ import { useState, useCallback, useEffect } from "react";
 import { Card } from "/src/Components/index";
 import "./Home.css";
 import { v4 as uuidv4 } from "uuid";
+import authService from "../../appwriteService/auth";
 
 export default function Home() {
    const [search, setSearch] = useState("nature");
@@ -57,6 +58,7 @@ export default function Home() {
    useEffect(() => {
       searchImages();
    }, [prevSearch, page]);
+
 
    class imageDatamaker {
       constructor(imageLink, imageSrc, imageAltTag, pageUrl, description, authorUrl, AutherName) {

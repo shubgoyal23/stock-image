@@ -1,11 +1,21 @@
 import {  Link, NavLink } from "react-router-dom"
 import "./Header.css"
+import { useSelector } from 'react-redux'
+import { useEffect, useState } from "react"
+
 
 export default function Header(){
+    const status = useSelector(state => state.auth.loggedin)
+    const [collapsed, setcollapsed] = useState(true)
+    useEffect(()=>{
+        setcollapsed(true)
+    },[status])
     return(
-        <header className="header">
+        <header className={collapsed? "header": "header coll"}>
             <div className="logo"><Link to="#"><img src="/stock image-logo.png" alt="" /></Link></div>
-            <nav>
+            <button onClick={() => setcollapsed(prev => !prev)} className="hamburg-btn">{collapsed? <i className="fa-solid fa-bars"></i>: <i className="fa-solid fa-xmark"></i>}</button>
+           <div className={collapsed? "hamburg" : "hamburg coll"}>
+           <nav>
             <ul>
                 <li>
                     <NavLink to="/" className={({isActive}) => `${isActive? "active" : ""}`}>Home</NavLink>
@@ -22,9 +32,11 @@ export default function Header(){
             </ul>
             </nav>
             <div className="login-btn-div">
-                <button>Login</button>
-                <button>Register</button>
+                {!status && <NavLink to="/login" ><button>Login</button></NavLink>}
+                {!status && <NavLink to="/register" ><button>Register</button></NavLink>}
+                {status && <NavLink to="/logout" ><button>Logout</button></NavLink>} 
             </div>
+           </div>
         </header>
     )
 }

@@ -28,7 +28,7 @@ export default function ApiKey() {
    return (
       <div className="apiKey">
          <div className="keys">
-            <h1>API Keys Required</h1>
+            <h1>Use Your Own API keys</h1>
             <form action="/" onSubmit={setKeys}>
                <input
                   type="text"
