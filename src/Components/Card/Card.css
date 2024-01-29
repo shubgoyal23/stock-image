@@ -63,4 +63,24 @@
 .image-by{
     color: #39d15a;
 }
+
+.favorite-div{
+  position: fixed;
+  top: 5px;
+  right: 5px;
+}
+.favorite-div button{
+  background-color: transparent;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.favorite-div button .fa-regular{
+  color: gray;
+}
+.favorite-div button .fa-solid{
+  color: darkgoldenrod;
+}
+
+
   

@@ -19,14 +19,13 @@ function Login() {
      async function formSubmit(data){
         setError("")
         try {
-          console.log(data)
            const user =  await authService.loginUser(data)
            if(user){
-            dispatch(login(user))
-            navigate("/")
-           }
-        } catch (error) {
-            setError(error)
+             dispatch(login(user))
+             navigate("/")
+            }
+          } catch (error) {
+            setError(error.message)
         }
       }
   return (

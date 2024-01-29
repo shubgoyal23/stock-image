@@ -9,7 +9,7 @@ export default function Header(){
     const [collapsed, setcollapsed] = useState(true)
     return(
         <header className={collapsed? "header": "header coll"}>
-            <div className="logo"><Link to="#"><img src="/stock image-logo.png" alt="" /></Link></div>
+            <div className="logo"><Link to="/"><img src="/stock image-logo.png" alt="" /></Link></div>
             <button onClick={() => setcollapsed(prev => !prev)} className="hamburg-btn">{collapsed? <i className="fa-solid fa-bars"></i>: <i className="fa-solid fa-xmark"></i>}</button>
            <div className={collapsed? "hamburg" : "hamburg coll"}>
            <nav>
@@ -24,7 +24,7 @@ export default function Header(){
                     <NavLink to="/contact" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>contact</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/apikey" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>ApiKey</NavLink>
+                    <NavLink to="/favorite" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>Stared</NavLink>
                 </li>
             </ul>
             </nav>
