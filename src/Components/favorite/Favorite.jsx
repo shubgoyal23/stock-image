@@ -24,6 +24,8 @@ function Favorite() {
             }
          
          }).catch(error => console.log(error)).finally(()=> setLoad(false))
+      }else{
+         setLoad(false)
       }
    }, []);
    return load? <Loading/> :(!user.loggedin? <h1 className="fav-h1">Login To see Favorites</h1> : (
