@@ -3,11 +3,11 @@ import { Card } from "/src/Components/index";
 import "./Home.css";
 import { v4 as uuidv4 } from "uuid";
 import { useSelector } from "react-redux";
-import Auth from "../../conf/conf"
+import {Auth} from "../../conf/conf"
 
 export default function Home() {
    const [search, setSearch] = useState("nature");
-   const user = useSelector(state => state.loggedin)
+   const user = useSelector(state => state.auth.loggedin)
 
    const [checked, setChecked] = useState({
       pixabay: true,
