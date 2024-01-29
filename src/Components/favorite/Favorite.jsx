@@ -6,7 +6,7 @@ import { Card, Loading } from "../../Components/index";
 import "./Favorite.css"
 
 function Favorite() {
-   const [favoriteList, setFavoriteList] = useState([]);
+   const [favoriteList, setFavoriteList] = useState(null);
    const [load, setLoad] = useState(true)
    const user = useSelector((state) => state.auth);
    useEffect(() => {
@@ -17,7 +17,11 @@ function Favorite() {
                d.docID = items.$id;
                return d;
             });
-            setFavoriteList(newData);
+            if(newData.length > 0){
+               setFavoriteList(newData);
+            }else{
+               setFavoriteList(null)
+            }
          
          }).catch(error => console.log(error)).finally(()=> setLoad(false))
       }
@@ -25,7 +29,7 @@ function Favorite() {
    return load? <Loading/> :(!user.loggedin? <h1 className="fav-h1">Login To see Favorites</h1> : (
       <div>
          <div className="images-container">
-            {favoriteList.map((photo) => (
+            {!favoriteList? <h1 style={{color: "#39d15a"}}>Set Favorite To see Here</h1>  : favoriteList.map((photo) => (
                <Card key={uuidv4()} data={photo} />
             ))}
          </div>
