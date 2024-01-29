@@ -8,7 +8,6 @@ import "./Favorite.css"
 function Favorite() {
    const [favoriteList, setFavoriteList] = useState([]);
    const user = useSelector((state) => state.auth);
-   console.log(user);
    useEffect(() => {
       if (user.loggedin) {
          StaredService.listFavorite(user.userData.$id).then((data) => {
