@@ -52,7 +52,7 @@
   
   @media screen and (max-width: 520px) {
     .image-div {
-      width: 100%;
+      width: 95%;
     }
     nav ul {
       gap: 0.2rem;
