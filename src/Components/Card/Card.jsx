@@ -36,7 +36,7 @@ export default function Card({ data }) {
       }
    }
    return (
-      <div className="image-div" onDoubleClick={() => favoriteHandler()}>
+      <div className="image-div">
          <div className="favorite-div">
             <button onClick={() => favoriteHandler()}>
                {!favorite ? (
@@ -46,10 +46,8 @@ export default function Card({ data }) {
                )}
             </button>
          </div>
-         <div className="image">
-            <Link to={data.imageLink} target="_blank" download="">
-               <img src={data.imageSrc} alt={data.imageAltTag} />
-            </Link>
+         <div className="image" onDoubleClick={() => favoriteHandler()}>
+            <img src={data.imageSrc} alt={data.imageAltTag} />
          </div>
          <div className="tittle">
             <p>

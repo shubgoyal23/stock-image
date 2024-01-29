@@ -58,8 +58,8 @@ export default function Home() {
 
 
    class imageDatamaker {
-      constructor(imageLink, imageSrc, imageAltTag, pageUrl, description, authorUrl, AutherName) {
-         this.imageLink = imageLink;
+      constructor(imageSrc, imageAltTag, pageUrl, description, authorUrl, AutherName) {
+         
          this.imageSrc = imageSrc;
          this.imageAltTag = imageAltTag;
 
@@ -76,19 +76,19 @@ export default function Home() {
    function dataHandler(data, name) {
       if (name === "pixabay") {
          let finalData = data.hits.map((photo) => {       
-            return new imageDatamaker(photo.largeImageURL, photo.webformatURL, photo.tags, photo.pageURL, photo.tags, `https://pixabay.com/users/${photo.user}-${photo.user_id}`, photo.user)
+            return new imageDatamaker(photo.webformatURL, photo.tags, photo.pageURL, photo.tags, `https://pixabay.com/users/${photo.user}-${photo.user_id}`, photo.user)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
       if (name === "pexel") {
          let finalData = data.photos.map((photo) => {
-            return new imageDatamaker(photo.src.large, photo.src.large, photo.alt, photo.url, photo.alt, photo.photographer_url, photo.photographer)
+            return new imageDatamaker(photo.src.large, photo.alt, photo.url, photo.alt, photo.photographer_url, photo.photographer)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
       if (name === "unsplash") {
          let finalData = data.results.map((photo) => {
-            return new imageDatamaker(photo.urls.full, photo.urls.regular, photo.alt_description, photo.links.html, photo.description, `https://unsplash.com/@${photo.user.username}`, photo.user.name)
+            return new imageDatamaker(photo.urls.regular, photo.alt_description, photo.links.html, photo.description, `https://unsplash.com/@${photo.user.username}`, photo.user.name)
          });
          setImagesFinalData((predata) => [...predata, ...finalData]);
       }
