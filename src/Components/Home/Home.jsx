@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import {Auth} from "../../conf/conf"
 
 export default function Home() {
-   const [search, setSearch] = useState("nature");
+   const [search, setSearch] = useState("");
    const user = useSelector(state => state.auth.loggedin)
 
    const [checked, setChecked] = useState({
@@ -15,7 +15,7 @@ export default function Home() {
       unsplash: true,
    });
 
-   const [prevSearch, setPrevSearch] = useState("nature");
+   const [prevSearch, setPrevSearch] = useState("");
    const [page, setPAge] = useState(1);
    const [imagesFinalData, setImagesFinalData] = useState([]);
 
