@@ -68,6 +68,8 @@ export default function Home() {
 
          this.authorUrl = authorUrl;
          this.AutherName = AutherName;
+
+         this.favorite = false
       }
    }
 

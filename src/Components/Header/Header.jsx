@@ -24,7 +24,7 @@ export default function Header(){
                     <NavLink to="/contact" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>contact</NavLink>
                 </li>
                 <li>
-                    <NavLink to="/apikey" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>ApiKey</NavLink>
+                    <NavLink to="/favorite" className={({isActive}) => `${isActive? "active" : ""}`} onClick={() => setcollapsed(true)}>Stared</NavLink>
                 </li>
             </ul>
             </nav>
