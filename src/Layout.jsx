@@ -1,9 +1,10 @@
 import { Outlet } from "react-router-dom";
-import { Header, Footer } from "./Components/index";
+import { Header, Footer, Loading } from "./Components/index";
 import { useDispatch } from "react-redux";
 import { login, logout } from "../src/store/Appslice";
 import { useEffect, useState } from "react";
 import authService from "./appwriteService/auth";
+import {Loading as LoadingComp} from "./Components/index.js"
 
 export default function Layout() {
    const [loading, setLoading] = useState(true);
@@ -13,7 +14,7 @@ export default function Layout() {
          .currentUser()
          .then((userData) => {
             if (userData) {
-               dispatch(login( userData ));
+               dispatch(login(userData));
             } else {
                dispatch(logout());
             }
@@ -22,7 +23,7 @@ export default function Layout() {
          .finally(() => setLoading(false));
    }, []);
    return loading ? (
-      <h1>Loading...</h1>
+      <LoadingComp />
    ) : (
       <>
          <Header />

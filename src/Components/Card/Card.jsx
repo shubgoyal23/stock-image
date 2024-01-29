@@ -8,7 +8,6 @@ export default function Card({ data }) {
    const [favorite, setfavorite] = useState(data.favorite);
    const [docid, setdocid] = useState(data.docID);
    const user = useSelector((state) => state.auth.userData);
-
    async function favoriteHandler() {
       setfavorite((prev) => !prev);
       if (!favorite) {

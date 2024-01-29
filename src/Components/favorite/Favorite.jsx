@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import StaredService from "../../appwriteService/stared";
 import { useSelector } from "react-redux";
 import { v4 as uuidv4 } from "uuid";
-import { Card } from "../../Components/index";
+import { Card, Loading } from "../../Components/index";
 import "./Favorite.css"
 
 function Favorite() {
    const [favoriteList, setFavoriteList] = useState([]);
+   const [load, setLoad] = useState(true)
    const user = useSelector((state) => state.auth);
    useEffect(() => {
       if (user.loggedin) {
@@ -17,10 +18,11 @@ function Favorite() {
                return d;
             });
             setFavoriteList(newData);
-         });
+         
+         }).catch(error => console.log(error)).finally(()=> setLoad(false))
       }
    }, []);
-   return !user.loggedin? <h1 className="fav-h1">Login To see Favorites</h1> : (
+   return load? <Loading/> :(!user.loggedin? <h1 className="fav-h1">Login To see Favorites</h1> : (
       <div>
          <div className="images-container">
             {favoriteList.map((photo) => (
@@ -28,7 +30,7 @@ function Favorite() {
             ))}
          </div>
       </div>
-   );
+   ))
 }
 
 export default Favorite;

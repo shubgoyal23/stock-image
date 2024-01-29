@@ -3,6 +3,7 @@ import authService from '../../appwriteService/auth'
 import {useNavigate} from "react-router-dom"
 import { useDispatch } from 'react-redux'
 import { logout as storeLogout } from '../../store/Appslice'
+import {Loading} from '../index'
 
 function Logout() {
   const [loading, setLoading] = useState(true)
@@ -24,7 +25,7 @@ const dispatch = useDispatch()
     }
   return (
     <div>
-      {loading && <h2>Logging Out...</h2>}
+      {loading && <Loading />}
     </div>
   )
 }

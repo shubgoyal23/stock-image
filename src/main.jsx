@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import { RouterProvider, createBrowserRouter } from "react-router-dom";
 import Layout from "./Layout.jsx";
-import { Home, About, Contact, Favorite, Login, Register, Logout} from "./Components/index.js";
+import { Home, About, Contact, Favorite, Login, Register, Logout, ErrorPage} from "./Components/index.js";
 import "./index.css";
 import ImageStore from './store/Store'
 import { Provider } from 'react-redux'
@@ -11,6 +11,7 @@ const router = createBrowserRouter([
    {
       path: "/",
       element: <Layout />,
+      errorElement: <ErrorPage />,
       children: [
          { path: "/", element: <Home /> },
          { path: "/about", element: <About /> },

@@ -8,6 +8,7 @@ import Login from "./Login/Login";
 import Register from "./Register/Register";
 import Logout from "./Logout/Logout";
 import Favorite from "./favorite/Favorite";
+import ErrorPage from "./Error/Error";
+import Loading from "./Loading/Loading";
 
-
-export {Home, Header, Footer, About, Contact, Card, Login, Register, Logout, Favorite}
+export {Home, Header, Footer, About, Contact, Card, Login, Register, Logout, Favorite, ErrorPage, Loading}
